@@ -1,0 +1,128 @@
+:root{
+    --ink: #0b0b0b;
+    --muted: #666666;
+    --border: #111111;
+    --max: 1300px;
+    --gap: 48px;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--ink);
+    background: #ffffff;
+}
+
+/* Section layout */
+.section-3{
+    padding: 96px 20px 72px;
+}
+
+.wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* Section header */
+.eyebrow{
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: .02em;
+    color: var(--muted);
+    margin: 0 0 10px;
+}
+
+.title{
+    text-align: center;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.1;
+    margin: 0 0 16px;
+}
+
+.subtitle{
+    text-align: center;
+    color: var(--muted);
+    font-size: 18px;
+    max-width: 720px;
+    margin: 0 auto 96px;
+}
+
+/* Features grid */
+.grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 64px var(--gap);
+}
+
+@media (min-width: 900px) {
+    .grid{
+        grid-template-columns: repeat(3, 1fr);
+        
+    }
+}
+
+.feature{
+    text-align: center;
+    padding: 0 8px;
+}
+
+.icon-wrap{
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 18px;
+    display: grid;
+    place-items: center;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+}
+
+.icon{
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+
+.feature h3{
+    font-size: 28px;
+    line-height: 1.25;
+    margin: 0 0 12px;
+    font-weight: 700;
+}
+
+.feature p{
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* Footer link */
+.more{
+    margin-top: 72px;
+    text-align: center;
+}
+
+.more a{
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    text-decoration: none;
+    color: var(--ink);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+}
+
+.more a:hover{
+    border-color: var(--ink);
+}
+
+.arrow{
+    width: 18px;
+    height: 18px;
+}
