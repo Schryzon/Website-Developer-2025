@@ -1,6 +1,6 @@
 :root{
-    --ink: #0b0b0b;
-    --muted: #666666;
+    --ink: #080808;
+    --muted: #404040;
     --border: #111111;
     --max: 1300px;
     --gap: 48px;
@@ -31,10 +31,11 @@ body{
 /* Section header */
 .eyebrow{
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 700;
     letter-spacing: .02em;
-    color: var(--muted);
-    margin: 0 0 10px;
+    color: #000000;
+    margin: 0 0 20px;
 }
 
 .title{
@@ -120,9 +121,4 @@ body{
 
 .more a:hover{
     border-color: var(--ink);
-}
-
-.arrow{
-    width: 18px;
-    height: 18px;
 }
