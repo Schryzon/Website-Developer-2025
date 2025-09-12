@@ -88,6 +88,7 @@ h1, h2 {
     color:white; 
     padding: 10px 25px;
     border: none;
+    cursor: pointer;
 }
 
 .greeting{
@@ -111,6 +112,7 @@ h1, h2 {
     gap: 20px; /* jarak antar tombol */
     margin-top: 25px;
     font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+    cursor: pointer;
 }
 
 .button-style{
@@ -120,6 +122,7 @@ h1, h2 {
     color:black; 
     padding: 15px 25px; /* biar tombol proporsional */ 
     border: 2px solid white;
+    cursor: pointer;
 }
 
 .button-style2{
@@ -130,5 +133,6 @@ h1, h2 {
     padding: 15px 25px; 
     border: 5px;
     border: 2px solid white;
+    cursor: pointer;
 }
 
