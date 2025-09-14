@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="css/sign-up.css">
+</head>
+<body>
+    <div class="logo">
+        Logo
+    </div>
+
+    <main class="card" role="main" aria-labelledby="title">
+        <h1 id="title">Sign Up</h1>
+        <p class="subtitle"> Lorem ipsum dolor sit amet adipiscing elit.</p>
+        <form id="signup-form" action="#" method="post" novalidate>
+            <div class="row">
+                <label for="name">Name*</label>
+                <input type="text" class="field" id="name" name="name" autocomplete="name" required>
+            </div>
+
+            <div class="row">
+                <label for="name">Email*</label>
+                <input type="email" class="field" id="email" name="email" autocomplete="email" required>
+            </div>
+            
+            <div class="row">
+                <label for="name">Password*</label>
+                <input type="password" class="field" id="password" name="password" autocomplete="new-password" required>
+            </div>
+
+            <script src="./js/sign-up.js"></script>
+
+            <div class="actions">
+                <button type="submit" class="button button-primary">
+                    Sign up
+                </button>
+
+                <button type="submit" class="button button-ghost" aria-label="Sign up with Google">
+                    <!-- Monochrome 'G' to match the wireframe look -->
+                    <svg class="google" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                        <path d="M21.35 11.1h-9.18v2.92h5.27c-.23 1.42-1.57 4.16-5.27 4.16a6.09 6.09 0 0 1 0-12.18c1.73 0 2.9.73 3.57 1.36l2.44-2.37C16.6 3.3 14.38 2.25 12.17 2.25A9.75 9.75 0 1 0 21.9 12c0-.6-.05-.9-.55-.9z" fill="currentColor"/>
+                    </svg>
+                    <span>Sign up with Google</span>
+                </button>
+
+            </div>
+
+            <p class="login-row">
+                Already have an account? <a href="./log-in.php" aria-label="Log In">Log In</a>
+            </p>
+
+        </form>
+    </main>
+    <footer>
+        © 2025 Kelompok 6
+    </footer>
+
+</body>
+</html>
