@@ -1,0 +1,221 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Layout */
+body {
+  display: flex;
+  background: #FDFDF5; 
+  color: #333;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: #B8B2A6; 
+  padding: 20px;
+  min-height: 100vh;
+}
+.sidebar h2 {
+  color: #FDFDF5;
+  margin-bottom: 30px;
+}
+.sidebar ul {
+  list-style: none;
+}
+.sidebar li {
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #DBE9B6; 
+  border-radius: 8px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 500;
+}
+.sidebar li:hover {
+  background: #F4DADB; 
+  color: #000;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background: #F4DADB; 
+  padding: 12px 20px;
+  border-radius: 10px;
+}
+.header h1 {
+  font-size: 22px;
+  color: #333;
+}
+.profile span {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Info Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.card {
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}
+.pink { background: #F4DADB; }
+.purple { background: #B8B2A6; color: #fff; }
+.blue { background: #DBE9B6; }
+.gradient { background: #FDFDF5; border: 2px solid #B8B2A6; }
+
+/* Charts */
+.charts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.chart-box {
+  background: #FDFDF5;
+  border: 2px solid #DBE9B6;
+  padding: 15px;
+  border-radius: 12px;
+}
+.chart-box h3 {
+  color: #333;
+}
+
+.chart-box canvas {
+  width: 100% !important;
+  height: 250px !important;
+}
+
+/* Catalog */
+.catalog h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+.book-card {
+  background: #DBE9B6; 
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid #B8B2A6;
+}
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.book-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.book-card h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #333;
+}
+.book-card h2 {
+  font-size: 10px;
+  margin-bottom: 5px;
+  color: #4e8365;
+}
+
+.book-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+.book-card span {
+  font-weight: bold;
+  color: #1b2b1b;
+}
+
+canvas {
+  width: 100% !important;
+  height: 250px !important;
+}
+
+#genreChart {
+  width: 100% !important;   /* memenuhi lebar container */
+  height: 350px !important; /* cukup tinggi supaya lingkaran bulat */
+}
+
+.sidebar ul li a {
+  text-decoration: none;  /* hilangin underline */
+  color: inherit;         /* ikut warna parent (li) */
+  display: block;         /* biar penuh 1 kotak */
+}
+
+.sidebar ul li a:visited {
+  color: inherit;         /* biar gak ungu setelah diklik */
+}
+
+.sidebar ul li a:hover {
+  color: #000;            /* warna pas hover */
+}
+
+/* Styling tabel tambah buku */
+#bookTable {
+  width: 100%;
+  border-collapse: collapse;   /* gabung border */
+  margin-top: 20px;           /* jarak dari form */
+  background: #FDFDF5;        /* warna soft sesuai tema */
+  border: 2px solid #DBE9B6;  /* border luar */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#bookTable th, #bookTable td {
+  padding: 12px 15px;          /* spasi dalam */
+  text-align: center;          /* biar rata tengah */
+  border-bottom: 1px solid #ddd; /* garis pemisah bawah */
+}
+
+#bookTable th {
+  background: #B8B2A6;         /* header tabel soft */
+  color: #fff;
+  font-weight: bold;
+}
+
+#bookTable tr:nth-child(even) {
+  background: #F4DADB;         /* warna baris selang-seling */
+}
+
+#bookTable tr:hover {
+  background: #DBE9B6;         /* highlight pas hover */
+}
+
+#bookTable td img {
+  border-radius: 4px;
+}
+

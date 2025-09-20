@@ -11,7 +11,7 @@
     <div class="box">
         <div class="page-1">
             <div class="pageRow-1">
-                <h1 class="title" style="font-family: 'Intro Script';">Logo</h1>
+                <h1 class="title" style="font-family: 'intro script';">Logo</h1>
             </div>
             <div class="pageRow-2">
                 <h2 style="text-align: center; font-family: Arial, Helvetica, sans-serif;" class="sizefontLogin">
@@ -20,29 +20,29 @@
                 <p style="text-align: center; font-family: Arial, Helvetica, sans-serif;" class="sizefontSub">
                     Lorem ipsum, dolor sit amet adipisicing elit.
                 </p>
-                <form action="" class="formlogin">
+                <form action="" class="formlogin" id="formloginVal">
                     <label style="font-family: Arial, Helvetica, sans-serif;" class="sizefont">
                         Email*<br>
                     </label>
-                    <input type="email" class="adj-row"><br>
+                    <input type="email" id="emailLogin" class="adj-row"><br>
                     <label style="font-family: Arial, Helvetica, sans-serif;" class="sizefont">
                         Password* 
-                        <u style="margin-left: 215px; ">
+                        <u style="margin-left: 240px; ">
                             <a href="#" class="hiddenButton sizefont" style="font-family: Arial, Helvetica, sans-serif;">
                                 Forgot your password?<br>
                             </a>
                         </u>
                     </label>
-                    <input type="password" class="adj-row"><br>
+                    <input type="password" id="pwLogin" class="adj-row"><br>
                     <input type="submit" value="Log in" class="adj-loginButton">
                 </form>
                 <button class="adj-googleButton">
                     <i class='bx bxl-google' style="font-size: 14px;"></i> 
-                    Log in with Google
+                    Log in with google
                 </button>
                 <p style="text-align: center; font-family: Arial, Helvetica, sans-serif;" class="sizefont">
                     Don't have an account?
-                    <a href="./sign-up.php" class="hiddenButton sizefont" style="font-family: Arial, Helvetica, sans-serif;">
+                    <a href="#" class="hiddenButton sizefont" style="font-family: Arial, Helvetica, sans-serif;">
                         Sign up
                     </a>
                 </p>
@@ -51,6 +51,7 @@
                 <p class="footer">© 2025 Kelompok 6</p>
             </div>
         </div>
+        <script src="js/log-in.js"></script>
         <head class="page-2">
             <img src="img/placeholder-4.png" alt="image" />
         </head>
