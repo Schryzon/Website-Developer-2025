@@ -209,5 +209,4 @@
     }
 
     log_msg('INFO', 'Bookstore schema created / verified successfully.');
-
 ?>
