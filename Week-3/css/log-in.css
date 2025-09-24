@@ -1,0 +1,81 @@
+@font-face {
+    font-family: "Intro Script";
+    src: url("../fonts/IntroScriptDemo-Medium.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+.sizefont{
+    font-size: 12px;
+}
+.sizefontLogin{
+    font-size: 33px;
+    font-style: bold;
+}
+.sizefontSub{
+    font-size: 15px;
+}
+.box{
+    height: 100vh;
+    display: flex; flex-direction: row;
+}
+.title{
+    margin-left: 25px;
+    font-family: 'intro script';
+}
+.page-1{
+    flex: 100px;
+    display: flex; flex-direction: column;
+    justify-content: left;
+}
+.pageRow-1{
+    display: flex;
+    height: 150px;
+}
+.pageRow-2{
+    display: block;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pageRow-3{
+    display: flex;
+    height: 100px;
+}
+.page-2{
+    display: flex;
+    flex: 100px;
+    justify-content: right;
+}
+.formlogin{
+    margin-bottom: 0px;
+}
+.hiddenButton{
+    color: black;
+    text-decoration: none;
+}
+.adj-row{
+    margin-top: 5px; 
+    margin-bottom: 20px; 
+    padding: 10px; 
+    width: 400px
+}
+.adj-googleButton{
+    margin-top: 5px; 
+    margin-bottom: 5px; 
+    padding: 10px; 
+    width: 100%;
+}
+.adj-loginButton{
+    color: white;
+    background-color: black;
+    margin-top: 5px; 
+    margin-bottom: 5px; 
+    padding: 10px; 
+    width: 100%;
+}
+.footer {
+  text-align: left;
+  font-size: 12px;
+  color: #999;
+  margin-left: 25px;
+}
