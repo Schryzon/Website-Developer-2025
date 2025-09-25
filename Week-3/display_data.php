@@ -11,44 +11,63 @@ function h(string $v): string {
     return htmlspecialchars($v, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
-$rows = [];
-$err  = null;
+$err = null;
+$all_data = [];
 
 try {
+    $db = null;
+
     if (isset($pdo) && $pdo instanceof PDO) {
-        $stmt = $pdo->query('SELECT * FROM users');
-        $rows = $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : [];
+        $db = $pdo;
     } elseif (isset($connection) && $connection instanceof PDO) {
-        $stmt = $connection->query('SELECT * FROM users');
-        $rows = $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : [];
+        $db = $connection;
+    }
+
+    if ($db instanceof PDO) {
+        // fetch all table names
+        $tables = $db->query("SHOW TABLES")->fetchAll(PDO::FETCH_COLUMN);
+
+        foreach ($tables as $table) {
+            $rows = $db->query("SELECT * FROM `$table`")->fetchAll(PDO::FETCH_ASSOC);
+            $all_data[$table] = $rows;
+        }
     } elseif (isset($connection) && $connection instanceof mysqli) {
-        $result = $connection->query('SELECT * FROM users');
-        if ($result instanceof mysqli_result) {
-            while ($row = $result->fetch_assoc()) {
-                $rows[] = $row;
+        $tables = [];
+        $result = $connection->query("SHOW TABLES");
+        while ($row = $result->fetch_array()) {
+            $tables[] = $row[0];
+        }
+        $result->free();
+
+        foreach ($tables as $table) {
+            $rows = [];
+            $res = $connection->query("SELECT * FROM `$table`");
+            if ($res instanceof mysqli_result) {
+                while ($row = $res->fetch_assoc()) {
+                    $rows[] = $row;
+                }
+                $res->free();
             }
-            $result->free();
+            $all_data[$table] = $rows;
         }
     } else {
-        $err = 'No valid database connectionection found. Ensure connectionect.php sets $pdo (PDO) or $connection (PDO/mysqli).';
+        $err = 'No valid database connection found. Ensure connect.php sets $pdo (PDO) or $connection (PDO/mysqli).';
     }
 } catch (Throwable $e) {
     $err = $e->getMessage();
 }
-
-$headers = !empty($rows) ? array_keys($rows[0]) : [];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Users</title>
+    <title>Database Data</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 24px; }
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #ddd; padding: 8px; }
+        h2 { margin-top: 32px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 24px; }
+        th, td { border: 1px solid #ddd; padding: 6px; font-size: 14px; }
         th { background: #f4f4f4; text-align: left; }
-        .top { margin-bottom: 16px; }
         .error { color: #b00020; }
     </style>
 </head>
@@ -59,31 +78,32 @@ $headers = !empty($rows) ? array_keys($rows[0]) : [];
 
     <?php if ($err): ?>
         <p class="error"><?php echo h($err); ?></p>
-    <?php elseif (empty($rows)): ?>
-        <p>No users found.</p>
     <?php else: ?>
-        <table>
-            <thead>
-            <tr>
-                <?php foreach ($headers as $col): ?>
-                    <th><?php echo h((string)$col); ?></th>
-                <?php endforeach; ?>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($rows as $row): ?>
-                <tr>
-                    <?php foreach ($headers as $col): ?>
-                        <td><?php echo h((string)($row[$col] ?? '')); ?></td>
-                    <?php endforeach; ?>
-                </tr>
-            <?php endforeach; ?>
-            </tbody>
-        </table>
+        <?php foreach ($all_data as $table => $rows): ?>
+            <h2><?php echo h($table); ?></h2>
+            <?php if (empty($rows)): ?>
+                <p><em>No rows.</em></p>
+            <?php else: ?>
+                <table>
+                    <thead>
+                        <tr>
+                            <?php foreach (array_keys($rows[0]) as $col): ?>
+                                <th><?php echo h($col); ?></th>
+                            <?php endforeach; ?>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($rows as $row): ?>
+                            <tr>
+                                <?php foreach ($row as $val): ?>
+                                    <td><?php echo h((string)$val); ?></td>
+                                <?php endforeach; ?>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
+        <?php endforeach; ?>
     <?php endif; ?>
-
-    <div class="top" style="margin-top:16px;">
-        <a href="sign-up.php">Return to sign-up</a>
-    </div>
 </body>
 </html>
