@@ -63,7 +63,8 @@ try {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<<<<<<< HEAD
+
+
     <title>Database Data</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 24px; }
