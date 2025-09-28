@@ -23,34 +23,35 @@ try {
         $db = $connection;
     }
 
+    $orderBy = '';
     if ($db instanceof PDO) {
-        // fetch all table names
-        $tables = $db->query("SHOW TABLES")->fetchAll(PDO::FETCH_COLUMN);
-
-        foreach ($tables as $table) {
-            $rows = $db->query("SELECT * FROM `$table`")->fetchAll(PDO::FETCH_ASSOC);
-            $all_data[$table] = $rows;
+        $pkStmt = $db->query("SHOW KEYS FROM `$table` WHERE Key_name = 'PRIMARY'");
+        $pk = $pkStmt->fetch(PDO::FETCH_ASSOC);
+        if ($pk && isset($pk['Column_name'])) {
+            $orderBy = "ORDER BY `" . $pk['Column_name'] . "` ASC";
         }
-    } elseif (isset($connection) && $connection instanceof mysqli) {
-        $tables = [];
-        $result = $connection->query("SHOW TABLES");
-        while ($row = $result->fetch_array()) {
-            $tables[] = $row[0];
+        $rows = $db->query("SELECT * FROM `$table` $orderBy")->fetchAll(PDO::FETCH_ASSOC);
+        $all_data[$table] = $rows;
+    } elseif ($connection instanceof mysqli) {
+        $pkRes = $connection->query("SHOW KEYS FROM `$table` WHERE Key_name = 'PRIMARY'");
+        $pk = $pkRes->fetch_assoc();
+        $orderBy = '';
+        if ($pk && isset($pk['Column_name'])) {
+            $orderBy = "ORDER BY `" . $pk['Column_name'] . "` ASC";
         }
-        $result->free();
+        $pkRes->free();
 
-        foreach ($tables as $table) {
-            $rows = [];
-            $res = $connection->query("SELECT * FROM `$table`");
-            if ($res instanceof mysqli_result) {
-                while ($row = $res->fetch_assoc()) {
-                    $rows[] = $row;
-                }
-                $res->free();
+        $res = $connection->query("SELECT * FROM `$table` $orderBy");
+        $rows = [];
+        if ($res instanceof mysqli_result) {
+            while ($row = $res->fetch_assoc()) {
+                $rows[] = $row;
             }
-            $all_data[$table] = $rows;
+            $res->free();
         }
-    } else {
+        $all_data[$table] = $rows;
+    }
+    else {
         $err = 'No valid database connection found. Ensure connect.php sets $pdo (PDO) or $connection (PDO/mysqli).';
     }
 } catch (Throwable $e) {

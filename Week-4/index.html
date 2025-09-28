@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Pertemuan 4 - Form Registrasi</title>
+</head>
+<body>
+
+    <h1>Form Registrasi Sederhana</h1>
+    <p>Silakan isi data di bawah ini.</p>
+
+    <form id="formRegistrasi" action="proses_registrasi.php" method="POST" onsubmit="return validasiForm()">
+        
+        <label for="nama">Nama Lengkap:</label><br>
+        <input type="text" id="nama" name="nama">
+        <br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email">
+        <br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password">
+        <br><br>
+
+        <button type="submit">Daftar</button>
+    </form>
+
+    <hr>
+    <a href="tampil_data.php">Lihat Data Pendaftar</a>
+
+    <script src="js/register.js"></script>
+</body>
+</html>
